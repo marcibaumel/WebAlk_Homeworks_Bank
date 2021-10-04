@@ -9,6 +9,7 @@ public class BankDTO {
     private Double Balance;
     private String Customer;
     private Date CreatedDate;
+    private GenerateUUID generateUUID = new GenerateUUID();
 
     public UUID getId() {
         return Id;

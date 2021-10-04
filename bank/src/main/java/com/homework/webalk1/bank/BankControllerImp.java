@@ -12,6 +12,7 @@ import java.util.UUID;
 @RestController
 public class BankControllerImp implements BankController{
     private final List<BankDTO> bankUsers = new ArrayList<>();
+    private GenerateUUID generateUUID = new GenerateUUID();
 
     @Override
     public List<BankDTO> getEveryAccount() {
@@ -20,6 +21,7 @@ public class BankControllerImp implements BankController{
 
     @Override
     public void newAccount(BankDTO bankDTO) {
+        bankDTO.setId(generateUUID.generate());
         bankUsers.add(bankDTO);
     }
 
