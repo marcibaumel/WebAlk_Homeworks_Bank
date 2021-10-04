@@ -1,4 +1,7 @@
-package com.homework.webalk1.bank;
+package com.homework.webalk1.bank.implementation;
+import com.homework.webalk1.bank.ISideCalculations;
+import com.homework.webalk1.bank.model.BankDTO;
+
 import java.util.List;
 
 

@@ -1,47 +1,47 @@
-package com.homework.webalk1.bank;
+package com.homework.webalk1.bank.implementation;
 
-import org.springframework.http.MediaType;
+import com.homework.webalk1.bank.IBankController;
+import com.homework.webalk1.bank.model.BankDTO;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @RestController
-public class BankController {
+public class BankController implements IBankController {
 
     private final List<BankDTO> bankUsers = new ArrayList<>();
+
     private SideCalculations sideCalculations = new SideCalculations();
 
-    @GetMapping(path="/bank", produces = MediaType.APPLICATION_JSON_VALUE)
+    @Override
     public List<BankDTO> getEveryAccount(){
         return bankUsers;
     }
 
-    @PostMapping(path="bank/")
-    public void newAccount(@RequestBody @Valid BankDTO bankNewUser){
+    @Override
+    public void newAccount(BankDTO bankNewUser){
         bankUsers.add(bankNewUser);
     }
 
-    @PutMapping (path="bank/{id}")
-    public void changeUserBankName(@PathVariable("id") String id, String newBankName){
+    @Override
+    public void changeUserBankName(String id, String newBankName){
         int validId= sideCalculations.getTheUserElementNumberById(id, bankUsers);
         if(validId != -1){
             bankUsers.get(validId).setBankName(newBankName);
         }
     }
 
-    @DeleteMapping(path="bank/{id}")
-    public void deleteUser(@PathVariable("id") String id){
+    @Override
+    public void deleteUser(String id){
         int validId= sideCalculations.getTheUserElementNumberById(id, bankUsers);
         if(validId != -1){
             bankUsers.remove(validId);
         }
     }
 
-    @GetMapping(path="bank/{Customer}")
-    public BankDTO getUserByCustomer(@PathVariable("Customer") String customer){
+    @Override
+    public BankDTO getUserByCustomer(String customer){
         int validId= sideCalculations.getTheUserElementNumberByName(customer, bankUsers);
         BankDTO validBankDTO = new BankDTO();
         if(validId != -1){
@@ -50,4 +50,5 @@ public class BankController {
         return validBankDTO;
     }
 
+    //TODO: make an UUID generator which can generate a random UUID for the BankDTO cardNumber
 }

@@ -1,7 +1,8 @@
 package com.homework.webalk1.bank;
 
+import com.homework.webalk1.bank.model.BankDTO;
+
 import java.util.List;
-import java.util.UUID;
 
 public interface ISideCalculations {
 
