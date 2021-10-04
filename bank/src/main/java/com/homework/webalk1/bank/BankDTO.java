@@ -4,18 +4,30 @@ import java.util.Date;
 import java.util.UUID;
 
 public class BankDTO {
-    private UUID Id;
+
+    private int Id;
     private String BankName;
     private Double Balance;
     private String Customer;
     private Date CreatedDate;
-    private GenerateUUID generateUUID = new GenerateUUID();
+    private UUID CardNumber;
 
-    public UUID getId() {
+    public UUID getCardNumber() {
+        return CardNumber;
+    }
+
+    public void setCardNumber(UUID cardNumber) {
+        CardNumber = cardNumber;
+    }
+
+
+
+
+    public int getId() {
         return Id;
     }
 
-    public void setId(UUID id) {
+    public void setId(int id) {
         Id = id;
     }
 
@@ -49,16 +61,5 @@ public class BankDTO {
 
     public void setCreatedDate(Date createdDate) {
         CreatedDate = createdDate;
-    }
-
-    @Override
-    public String toString() {
-        return "BankDTO{" +
-                "Id=" + Id +
-                ", BankName='" + BankName + '\'' +
-                ", Balance=" + Balance +
-                ", Customer='" + Customer + '\'' +
-                ", CreatedDate=" + CreatedDate +
-                '}';
     }
 }
