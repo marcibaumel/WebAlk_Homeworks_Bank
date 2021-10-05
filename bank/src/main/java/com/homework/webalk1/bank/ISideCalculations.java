@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface ISideCalculations {
 
+    void setBankDTO(List<BankDTO> bankDTO);
     int getTheUserElementNumberById(String id, List<BankDTO> bankElements);
     int getTheUserElementNumberByName(String name, List<BankDTO> bankElements);
 

@@ -12,7 +12,7 @@ public class BankDTO {
 
     @NotNull
     @Range(min=1, max=30)
-    private int Id;
+    private Long Id;
     @NotBlank
     private String BankName;
     private Double Balance;
@@ -29,11 +29,11 @@ public class BankDTO {
         CardNumber = cardNumber;
     }
 
-    public int getId() {
+    public Long getId() {
         return Id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         Id = id;
     }
 
