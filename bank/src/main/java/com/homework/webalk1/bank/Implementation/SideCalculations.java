@@ -1,4 +1,4 @@
-package com.homework.webalk1.bank.implementation;
+package com.homework.webalk1.bank.Implementation;
 import com.homework.webalk1.bank.ISideCalculations;
 import com.homework.webalk1.bank.model.BankDTO;
 import org.springframework.stereotype.Component;

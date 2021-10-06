@@ -1,5 +1,6 @@
-package com.homework.webalk1.bank;
+package com.homework.webalk1.bank.Services;
 
+import com.homework.webalk1.bank.Repositories.BankRepository;
 import com.homework.webalk1.bank.model.BankDTO;
 import org.springframework.stereotype.Component;
 
@@ -8,7 +9,7 @@ import java.util.List;
 @Component
 public class BankServiceImp implements BankServices{
     private final int MAXIMUM_USER_NUMBER = 10;
-    private final  BankRepository bankRepository;
+    private final BankRepository bankRepository;
 
     public BankServiceImp(BankRepository bankRepository){
         this.bankRepository = bankRepository;
@@ -36,7 +37,8 @@ public class BankServiceImp implements BankServices{
     }
 
     @Override
-    public void deleteById(Long id) {
-        bankRepository.deleteById(id);
+    public void deleteUserById(Long id) {
+        bankRepository.deleteUserById(id);
     }
+
 }

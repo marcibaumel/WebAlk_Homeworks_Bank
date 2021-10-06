@@ -1,12 +1,12 @@
-package com.homework.webalk1.bank;
+package com.homework.webalk1.bank.Repositories;
 
 import com.homework.webalk1.bank.model.BankDTO;
 
 import java.util.List;
 
-public interface BankServices {
+public interface BankRepository {
     List<BankDTO> getAllAccount();
     BankDTO getAnAccountById(Long id);
     Long saveAccount(BankDTO bank);
-    void deleteById(Long id);
+    void deleteUserById(Long id);
 }

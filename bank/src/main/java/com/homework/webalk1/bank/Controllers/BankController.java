@@ -1,12 +1,11 @@
-package com.homework.webalk1.bank;
+package com.homework.webalk1.bank.Controllers;
 
-import com.homework.webalk1.bank.implementation.SideCalculations;
+import com.homework.webalk1.bank.Services.BankServices;
 import com.homework.webalk1.bank.model.BankDTO;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -34,6 +33,9 @@ public class BankController {
         return bankServices.getAnAccountById(id);
     }
 
-
+    @DeleteMapping(path="/{id}")
+    public void deleteAccountById(@PathVariable("id") Long id){
+        bankServices.deleteUserById(id);
+    }
 
 }

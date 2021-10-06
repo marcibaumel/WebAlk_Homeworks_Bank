@@ -1,19 +1,20 @@
-package com.homework.webalk1.bank;
+package com.homework.webalk1.bank.Repositories;
 
-import com.homework.webalk1.bank.implementation.SideCalculations;
+import com.homework.webalk1.bank.ISideCalculations;
 import com.homework.webalk1.bank.model.BankDTO;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Component
-public class BankMockRepository implements BankRepository{
+public class BankMockRepository implements BankRepository {
 
     private final List<BankDTO> bankUsers = new ArrayList<>();
     private final ISideCalculations sideCalculations;
 
-    public BankMockRepository(ISideCalculations sideCalculations){
+    public BankMockRepository(ISideCalculations sideCalculations) {
         this.sideCalculations = sideCalculations;
         sideCalculations.setBankDTO(bankUsers);
     }
@@ -44,7 +45,17 @@ public class BankMockRepository implements BankRepository{
     }
 
     @Override
-    public void deleteById(Long id) {
-
+    public void deleteUserById(Long id) {
+        int found = sideCalculations.getTheUserElementNumberById(id, bankUsers);
+        if(found != -1){
+            bankUsers.remove(found);
+        }
+        else{
+            throw new NoSuchElementException();
+        }
     }
+
+
 }
+
+
