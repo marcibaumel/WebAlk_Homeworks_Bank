@@ -29,5 +29,11 @@ public class BankController {
         bankServices.saveAccount(bankDTO);
     }
 
+    @GetMapping(path = "/{id}", produces= MediaType.APPLICATION_JSON_VALUE)
+    public BankDTO getAccountById(@PathVariable("id") Long id){
+        return bankServices.getAnAccountById(id);
+    }
+
+
 
 }

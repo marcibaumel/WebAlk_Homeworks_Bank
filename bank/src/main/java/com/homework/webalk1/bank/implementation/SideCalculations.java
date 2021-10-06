@@ -19,9 +19,9 @@ public class SideCalculations implements ISideCalculations {
     }
 
     @Override
-    public int getTheUserElementNumberById(String givenId, List<BankDTO> bankUsers){
+    public int getTheUserElementNumberById(Long givenId, List<BankDTO> bankUsers){
         int found = -1;
-        int searchedId = Integer.parseInt(givenId);
+        int searchedId = givenId.intValue();
         for (int i = 0; i<bankUsers.size(); i++){
             if(bankUsers.get(i).getId() == searchedId){
                 found = i;

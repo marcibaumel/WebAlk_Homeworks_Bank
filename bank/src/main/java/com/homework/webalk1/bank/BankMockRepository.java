@@ -20,16 +20,26 @@ public class BankMockRepository implements BankRepository{
 
     @Override
     public List<BankDTO> getAllAccount() {
-        return null;
+        return bankUsers;
     }
 
     @Override
     public BankDTO getAnAccountById(Long id) {
-        return null;
+        int found = sideCalculations.getTheUserElementNumberById(id, bankUsers);
+        return bankUsers.get(found);
     }
 
     @Override
     public Long saveAccount(BankDTO bank) {
+        int found = sideCalculations.getTheUserElementNumberById(bank.getId(), bankUsers);
+        if (found != -1) {
+            BankDTO foundBank = bankUsers.get(found);
+            foundBank.setCustomer(bank.getCustomer());
+            foundBank.setBankName(bank.getBankName());
+        } else {
+            bankUsers.add(bank);
+        }
+
         return null;
     }
 
