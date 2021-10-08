@@ -1,6 +1,6 @@
 package com.homework.webalk1.bank.Repositories;
 
-import com.homework.webalk1.bank.ISideCalculations;
+import com.homework.webalk1.bank.Implementation.ISideCalculations;
 import com.homework.webalk1.bank.model.BankDTO;
 import org.springframework.stereotype.Component;
 
