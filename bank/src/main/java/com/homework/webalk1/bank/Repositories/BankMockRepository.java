@@ -14,6 +14,9 @@ public class BankMockRepository implements BankRepository {
     private final List<BankDTO> bankUsers = new ArrayList<>();
     private final ISideCalculations sideCalculations;
 
+    /*
+    How can I mock a class if the class has a dependency
+     */
     public BankMockRepository(ISideCalculations sideCalculations) {
         this.sideCalculations = sideCalculations;
         sideCalculations.setBankDTO(bankUsers);

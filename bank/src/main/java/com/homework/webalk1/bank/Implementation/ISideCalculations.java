@@ -8,6 +8,5 @@ public interface ISideCalculations {
 
     void setBankDTO(List<BankDTO> bankDTO);
     int getTheUserElementNumberById(Long id, List<BankDTO> bankElements);
-    int getTheUserElementNumberByName(String name, List<BankDTO> bankElements);
 
 }
