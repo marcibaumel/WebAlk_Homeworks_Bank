@@ -1,11 +1,13 @@
 package com.homework.webalk1.bank.Controllers;
 
+import com.homework.webalk1.bank.Services.Bank;
 import com.homework.webalk1.bank.Services.BankServices;
-import com.homework.webalk1.bank.model.BankDTO;
+import com.homework.webalk1.bank.Repositories.BankModel;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -19,17 +21,22 @@ public class BankController {
     }
 
     @GetMapping(path ="", produces= MediaType.APPLICATION_JSON_VALUE)
-    public List<BankDTO> getAllAccount(){
-        return bankServices.getAllAccount();
+    public Iterable<BankDto> getAllAccount(){
+        List<BankDto> bankDtoList = new ArrayList<>();
+        for(Bank bank: bankServices.getAllBank()){
+            bankDtoList.add(new BankDto(bank));
+        }
+        return bankDtoList;
     }
 
-    @PostMapping(path="")
-    public void newBankUser(@RequestBody @Valid BankDTO bankDTO){
-        bankServices.saveAccount(bankDTO);
+    @PostMapping
+    public void newBankUser(@RequestBody @Valid BankModel bankModel){
+        bankServices.saveBank();
     }
 
+    /*
     @GetMapping(path = "/{id}", produces= MediaType.APPLICATION_JSON_VALUE)
-    public BankDTO getAccountById(@PathVariable("id") Long id){
+    public BankModel getAccountById(@PathVariable("id") Long id){
         return bankServices.getAnAccountById(id);
     }
 
@@ -37,5 +44,5 @@ public class BankController {
     public void deleteAccountById(@PathVariable("id") Long id){
         bankServices.deleteUserById(id);
     }
-
+    */
 }
