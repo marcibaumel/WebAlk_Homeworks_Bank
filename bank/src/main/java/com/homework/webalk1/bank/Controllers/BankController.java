@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping(path = "/bank")
@@ -23,23 +24,25 @@ public class BankController {
     @GetMapping(path ="", produces= MediaType.APPLICATION_JSON_VALUE)
     public Iterable<BankDto> getAllAccount(){
         List<BankDto> bankDtoList = new ArrayList<>();
+
         for(Bank bank: bankServices.getAllBank()){
             bankDtoList.add(new BankDto(bank));
         }
         return bankDtoList;
     }
 
-    @PostMapping
-    public void newBankUser(@RequestBody @Valid BankModel bankModel){
-        bankServices.saveBank();
+    @PostMapping(produces= MediaType.APPLICATION_JSON_VALUE)
+    public BankDto newBankUser(@RequestBody @Valid BankCreateDto bankCreateDto){
+        return new BankDto(bankServices.createNewBank(bankCreateDto.bankCreateDtoToBank()));
+    }
+
+
+    @GetMapping(path = "/{id}", produces= MediaType.APPLICATION_JSON_VALUE)
+    public BankDto getAccountById(@PathVariable("id") UUID id){
+        return new BankDto(bankServices.getBankById(id));
     }
 
     /*
-    @GetMapping(path = "/{id}", produces= MediaType.APPLICATION_JSON_VALUE)
-    public BankModel getAccountById(@PathVariable("id") Long id){
-        return bankServices.getAnAccountById(id);
-    }
-
     @DeleteMapping(path="/{id}")
     public void deleteAccountById(@PathVariable("id") Long id){
         bankServices.deleteUserById(id);
