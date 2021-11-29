@@ -16,8 +16,14 @@ public class TransactionController {
 
     private final TransactionService transactionService;
 
-    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = ("/saveNewTransaction"),produces = MediaType.APPLICATION_JSON_VALUE)
     public Transaction saveNewTransaction(@RequestBody @Valid CreateTransaction createTransaction){
         return new Transaction(transactionService.saveNewTransaction(createTransaction.toServiceDto()));
     }
+
+    @GetMapping(path = ("/findHighestTransaction"),produces = MediaType.APPLICATION_JSON_VALUE)
+    public Transaction findHighestTransaction(){
+        return new Transaction(transactionService.findHighestTransaction());
+    }
+
 }

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Optional;
 import java.util.UUID;
 
 
@@ -19,6 +20,13 @@ public class Transaction {
     private String spentType;
 
     private String account;
+
+    public Transaction(Optional<com.homework.webalk1.bank.Entity.Transaction> transaction) {
+        this.transactionId = transaction.get().getTransactionId();
+        this.spentMoney = transaction.get().getSpentMoney();
+        this.spentType = transaction.get().getSpentType();
+        this.account = transaction.get().getAccount();
+    }
 
 
     public com.homework.webalk1.bank.Entity.Transaction toTransactionEntity(){

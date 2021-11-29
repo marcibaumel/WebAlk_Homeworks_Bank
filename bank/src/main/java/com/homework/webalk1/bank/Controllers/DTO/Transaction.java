@@ -22,7 +22,7 @@ public class Transaction {
     public Transaction(com.homework.webalk1.bank.Services.ServiceDTO.Transaction transaction){
         this.transactionId = transaction.getTransactionId();
         this.spentMoney = transaction.getSpentMoney();
-        this.spentMoney = transaction.getSpentMoney();
+        this.spentType = transaction.getSpentType();
         this.account = transaction.getAccount();
     }
 

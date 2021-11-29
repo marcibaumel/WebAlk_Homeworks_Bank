@@ -13,10 +13,11 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateTransaction {
+
     @NotNull @Min(10)
     private Long spentMoney;
 
-    @NotEmpty
+    @NotEmpty @NotNull
     private String spentType;
 
     @NotEmpty
