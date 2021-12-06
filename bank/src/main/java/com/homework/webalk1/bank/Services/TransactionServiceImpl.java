@@ -22,11 +22,11 @@ public class TransactionServiceImpl implements TransactionService{
 
     @Override
     public Transaction findHighestTransaction() {
-        try{
-            return new Transaction(transactionRepository.findTopByOrderBySpentMoneyDesc());
-        }catch (EmptyResultDataAccessException ex){
+
+        if(transactionRepository.findTopByOrderBySpentMoneyDesc().isEmpty()){
             throw new NoEntityFoundedException();
         }
+        return new Transaction(transactionRepository.findTopByOrderBySpentMoneyDesc());
     }
 
 }
