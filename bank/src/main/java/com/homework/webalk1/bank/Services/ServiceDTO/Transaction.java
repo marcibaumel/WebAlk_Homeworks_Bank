@@ -28,7 +28,6 @@ public class Transaction {
         this.account = transaction.get().getAccount();
     }
 
-
     public com.homework.webalk1.bank.Entity.Transaction toTransactionEntity(){
         return new com.homework.webalk1.bank.Entity.Transaction(transactionId, spentMoney, spentType, account);
     }
