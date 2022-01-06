@@ -17,7 +17,7 @@ public class CreateTransaction {
     @NotNull @Min(10)
     private Long spentMoney;
 
-    @NotEmpty @NotNull
+    @NotEmpty
     private String spentType;
 
     @NotEmpty
